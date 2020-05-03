@@ -1,0 +1,22 @@
+{
+	"books": [
+		{
+            "title": "“Lust for Life”",
+            "author": "Irving Stone",
+			"id": "1",
+			"desc": "A biographical novel based on the life of the famous Dutch painter, Vincent van Gogh, and his hardships."
+        },
+        {
+            "title": "“When Nietzsche Wept”",
+            "author": "Irvin D. Yalom",
+			"id": "2",
+			"desc": "..."
+        },
+        {
+            "title": "“The Schopenhauer Cure”",
+            "author": "Irvin D. Yalom",
+			"id": "3",
+			"desc": "..."
+        }
+	]
+}
