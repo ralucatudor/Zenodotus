@@ -1,7 +1,9 @@
 console.log('May Node be with you');
 
 const express = require('express');
+const morgan = require("morgan");
 const bodyParser= require('body-parser');
+const cors = require("cors");
 
 const fs = require("fs");
 
@@ -11,25 +13,27 @@ const app = express();
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.json());
+
+// Handling scripts / HTML requests
+app.use(express.static('public'));
+
 // Create
 app.post("/books", (req, res) => {
   const booksList = readJSONFile();
-  req.body.id = uuid();
-  console.log("help", req.body);
+  // req.body.id = 4;
+  console.log(":(", req.body);
   
   booksList.push(req.body); 
   writeJSONFile(booksList);
   res.status(200);
+  res.send(req.body);
 })
 
 // Read all
-app.get("/books", (req, res) => {
+app.get("/books", (req, res) => { // req.query
   const booksList = readJSONFile();
   res.send(booksList);  // or res.json(booksList)
-})
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html')
 })
 
 // Read one
@@ -43,9 +47,6 @@ app.get("/books/:id", (req, res) => {
 
 // Delete
 
-
-// Handling scripts / HTML requests
-app.use(express.static('public'));
 
 // input/ output functions
 
