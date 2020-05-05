@@ -9,7 +9,7 @@ function getBooks() {
         .then((books) => {
             books.forEach((book) => {
                 document.getElementById("wrapper").innerHTML += `<section id="${book.id}" class="card">
-                                    <h4><b>${book.title}</b></h4>by ${book.author}`;
+                                    <b>${book.title}</b> by ${book.author}`;
             })
         })
 }
@@ -31,39 +31,14 @@ function postBook() {
             "Content-type": "application/json"
         },
         body: JSON.stringify(postObject)
-    }).then(function (resp) {
-        console.log("Received from postBook:");
-        console.log(resp);
+    }).then(function (response) {
+        response.json().then((resp) => {
+            console.log("Received from postBook:", resp);
+            document.getElementById("wrapper").innerHTML += `<class="card">
+                                    <b>${resp.title}</b> by ${resp.author}`;
+            resetForm();
+        });
     });
-    
-    
-    // .then(function (response) {
-    //     response.json().then((resp) => {
-    //         console.log("Received from createnote:");
-    //         console.log(resp);
-    //         // callback(resp);
-    //     });
-    // });
-    
-    
-    // .then(function(response) {
-    //     return response.text();
-    // })
-    // .then(function(muutuja){
-    //     console.log(muutuja);
-    // });
-
-
-    // .then(function (res) {
-    //     // Get the new books list
-    //     getBooks();
-    //     // Reset Form
-    //     resetForm();
-    // });
-
-
-// .then(function(res){ return res.json(); })
-// .then(function(data){ alert( JSON.stringify( data ) ) })
 }
 
 function resetForm() {
