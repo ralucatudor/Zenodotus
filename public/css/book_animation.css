@@ -14,7 +14,7 @@
     perspective: 70rem;
   }
   .cover {
-    background-color: lightskyblue;
+    background-color: rgb(75, 37, 37);
     transform: rotateY(0deg);
     /* width: 9.25rem;
     height: 12.5rem; */
