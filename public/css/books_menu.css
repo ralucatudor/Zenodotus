@@ -10,10 +10,12 @@
 	cursor: pointer;
 	outline: 0;
 	overflow: hidden;
+	text-decoration:none; /* Remove stubborn underline from link */
+	color: white;
+	width: 350px;
 }
 
 .books-container .a .h3 {
-    color: white;
 	margin: 1em;
 }
 
@@ -36,7 +38,7 @@
 }
 
 .wrapper {
-	max-width: 68em;
+	max-width: 80em;
 	margin: 0 auto;
 	padding: 0 2em;
 	opacity: 1;

@@ -1,6 +1,21 @@
+function printCurrentDay() {
+    var d = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+  
+    return weekday[d.getDay()];
+}
+
 MENU_html_code =
 `<header id="header" class='header'>
-    <h1>Hi!</h1>
+    <h1>Hello there!</h1>
+    <p>It is a beautiful ${printCurrentDay()}! Why don't you start reading a book?</p>
     <ul class="icons ul">
         <li class='li'><a class='a' href="javascript:MENU_Book(-1)"><span class="label a">Add New Book</span></a></li>
     </ul>
@@ -8,29 +23,53 @@ MENU_html_code =
 <section class="books-container" id="books-container">        
 </section>`;
 
-const formTitle = document.getElementById('formTitle');
-const formAuthor = document.getElementById('formAuthor');
-const addButton = document.getElementById('addButton');
-
 var bookList = [];
 
-
 var MENU_Book = (id) => {
-    // WooHoo BOOK EDITOR
     if (id == -1) {
         /// I must create a new book
         bookList.push({
             title: "",
-            author: ""
+            author: "",
+            desc: ""
         })
         id = bookList.length - 1;
     }
     BOOK_Book(bookList[id], function() {
+        //console.log(JSON.stringify(bookList[id]));
+        const postObject = bookList[id];
+        // post book
+        fetch("/books", {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(postObject)
+        }).then(function (response) {
+            response.json().then((resp) => {
+                console.log("Received from postBook:", resp);
+                // document.getElementById("wrapper").innerHTML += `<class="card">
+                //                         <b>${resp.title}</b> by ${resp.author}`;
+                getBooks();
+            });
+        });
     });
 }
 
 function renderBooks() {
-    // aici pot face o sortare in functie de numarul de pagini ramase de citit
+    // si pun anumite clase la cartile citite - asa ca o sa le pun alt stil css - le fac mai verzi
+    // iar la cele la care sunt in proces de citire, adaug si cat % din carte am citit
+    // si la pun alta clasa si alt stil
+
+    bookList.sort((a, b) => {
+        var asmall = false;
+        asmall = (a.title < b.title);
+
+        if (asmall)
+            return -1;
+        return 1;
+    });
+
     const booksContainer = document.getElementById('books-container');
 
     var index = 0;
@@ -41,9 +80,18 @@ function renderBooks() {
 
         var title = document.createElement('h3');
         title.setAttribute('class', 'h3');
-        title.textContent = book.title;
-
+        title.innerHTML = `“${book.title}”`;
         a.appendChild(title);
+
+        var author = document.createElement('p');
+        author.innerHTML = `by ${book.author}`
+
+        a.appendChild(author);
+
+        var bookDescription = document.createElement('p');
+        bookDescription.textContent = book.desc;
+
+        a.appendChild(bookDescription);
 
         booksContainer.appendChild(a);
         index += 1;
@@ -68,40 +116,3 @@ function getBooks() {
 }
 
 getBooks();     // APELEZ----------------------------------
-
-function postBook() {
-    // create post object
-    const postObject = {
-        title: formTitle.value,
-        author: formAuthor.value
-    }
-    console.log(JSON.stringify(postObject));
-    // post book
-    fetch("/books", {
-        method: 'POST',
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify(postObject)
-    }).then(function (response) {
-        response.json().then((resp) => {
-            console.log("Received from postBook:", resp);
-            document.getElementById("wrapper").innerHTML += `<class="card">
-                                    <b>${resp.title}</b> by ${resp.author}`;
-            resetForm();
-        });
-    });
-}
-
-function resetForm() {
-    formTitle.value = '';
-    formAuthor.value = '';
-}
-
-// addButton.addEventListener('click', postBook);
-addButton.addEventListener('click', function() {
-    const object = {
-        title: "ceva"
-    }
-    NOTE_Note(object, function() {});
-});
