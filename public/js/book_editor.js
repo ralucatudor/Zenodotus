@@ -23,7 +23,7 @@ BOOK_html_code =
     <div id="positive-warning" class="positive-warning"></div>
 </form>    
 <button class="button" onclick="BOOK_ProcessChanges()">Save</button>
-<button class="button" onclick="NOTE_Discard()">Discard Changes</button>
+<button class="button" onclick="BOOK_Discard()">Discard Changes</button>
 `;
 
 var BOOK_callback = null;
@@ -61,25 +61,26 @@ var BOOK_ProcessChanges = function() {
     document.getElementById("warning").innerHTML = "";
     document.getElementById("positive-warning").innerHTML = "<p>Saved Changes! Going back to main menu...</p>";
 
-    // window.removeEventListener('beforeunload', (event) => {
-    //     // Cancel the event as stated by the standard.
-    //     event.preventDefault();
-    //     // Chrome requires returnValue to be set.
-    //     event.returnValue = '';
-    // });
-
+    window.onbeforeunload = function() {}
     setTimeout(BOOK_callback, 500);
 }
 
+var BOOK_Discard = function() {
+    window.onbeforeunload = function() {}
+    document.getElementById("warning").innerHTML = "";
+    document.getElementById("positive-warning").innerHTML = "<p>Changes Discarded! Going back to main menu...</p>";
+
+    window.onbeforeunload = function() {}
+    setTimeout(BOOK_callback, 500);
+}
 
 var BOOK_Delete = function() {
     BOOK_object.title = "";
-    /// it should self-distruct without a title
-    // window.onbeforeunload = function() { }
+    window.onbeforeunload = function() {}
     document.getElementById("warning").innerHTML = "";
-    document.getElementById("positive-warning").innerHTML = "<p>Note Deleted! Going back to main menu...</p>";
+    document.getElementById("positive-warning").innerHTML = "<p>Book Deleted! Going back to main menu...</p>";
 
-    // window.onbeforeunload = function() { }
+    window.onbeforeunload = function() {}
     setTimeout(BOOK_callback, 500);
 }
 
@@ -90,18 +91,21 @@ var BOOK_Book = function(obj, callback) {
     //     // Chrome requires returnValue to be set.
     //     event.returnValue = '';
     // });
+    window.onbeforeunload = function() {
+        return "";
+    };
 
     BOOK_callback = callback;
     BOOK_object = obj;
  
     var wrapper = document.getElementById('wrapper');
     wrapper.innerHTML = BOOK_html_code;
-    // daca titlul e gol atunci este create
-    // altfel pot sa adaug delete node - nu e nevoie de delete node pt create
-    
-    if (BOOK_object.title.length > 0) { // NOT create
-        // <button class="button" onclick="BOOK_Delete()">Delete Book</button>
 
+    // I do not need a "Delete Book" button if my method is Create Book,
+    // therefore I only add the delete button if the object is alreafy created.
+    if (BOOK_object.title.length > 0) { // NOT create
+        // add <button class="button" onclick="BOOK_Delete()">Delete Book</button> to wrapper
+        
         console.log("update");
         var button = document.createElement("BUTTON");
         button.textContent = "Delete Book";

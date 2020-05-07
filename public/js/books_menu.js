@@ -125,7 +125,7 @@ function getBooks() {
 
             MENU_html_code =
                 `<header id="header" class='header'>
-                    <h1>Hello there!</h1>
+                    <h1 class="menu-greeting">Hello there!</h1>
                     <p>
                     It is a beautiful ${printCurrentDay()}! Why don't you start reading a book? 
                     With Zenodotus, your home library management single-page web application, you can keep track of your books!
