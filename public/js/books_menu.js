@@ -115,7 +115,7 @@ function renderBooks() {
 
 function getBooks() {
     document.getElementById("wrapper").innerHTML += "Here are your books:";
-    const res = fetch("/books")     // no need to specify the method
+    const res = fetch("/books")     // no need to specify the method, Fetch automatically sets the method to get if you leave it out
         .then((res) => res.json())  // Trasform server response to get the books
         .then((books) => {
             console.log(books);
@@ -134,7 +134,7 @@ function getBooks() {
                     <br>
                     Out of all the books you have introduced, ${countReadBooks()} of them you have read, while ${countStartedBooks()} of them you have started to read.    
                     </p>
-                    <a class='add-book-button btn-one' href="javascript:MENU_addBook()">Add New Book</a>
+                    <a class='add-book-button' href="javascript:MENU_addBook()">Add New Book</a>
                 </header>
                 <section class="books-container" id="books-container"></section>`;
 
