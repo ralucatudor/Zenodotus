@@ -12,42 +12,11 @@ function printCurrentDay() {
     return weekday[d.getDay()];
 }
 
-MENU_html_code =
-`<header id="header" class='header'>
-    <h1>Hello there!</h1>
-    <p>
-    It is a beautiful ${printCurrentDay()}! Why don't you start reading a book? 
-    With Zenodotus, your home library management single-page web application, you can keep track of your books!
-    As you can see, the book list is alphabetically ordered.
-    You can distinguish between the books you have finished, the ones you are currently reading and the ones you have not yet started by looking at the background color.
-    </p>
-    <a class='add-book-button btn-one' href="javascript:MENU_addBook()">Add New Book</a>
-    </header>
-<section class="books-container" id="books-container">        
-</section>`;
-
 var bookList = [];
 
 function deleteBook(id) {
-    // delete dog
     fetch(`http://localhost:3000/books/${id}`, {
         method: 'DELETE',
-    }).then(function () {
-        // Get the new dogs list
-        getBooks();
-    });
-}
-
-function updateBook(id) {
-    // creat put object
-    const putObject = bookList[id];
-    console.log(bookList[id]);
-    fetch(`http://localhost:3000/books/${id}`, {
-        method: 'PUT',
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify(putObject)
     }).then(function () {
         // Get the new books list
         getBooks();
@@ -61,11 +30,9 @@ function MENU_addBook() {
         author: "",
         desc: ""
     })
-    id = bookList.length - 1;
-    bookList[id].id = id;
-    BOOK_Book(bookList[id], function() {
-        //console.log(JSON.stringify(bookList[id]));
-        const postObject = bookList[id];
+    bookIndex = bookList.length - 1;
+    BOOK_Book(bookList[bookIndex], function() {
+        const postObject = bookList[bookIndex];
         // post book
         fetch("/books", {
             method: 'POST',
@@ -76,38 +43,20 @@ function MENU_addBook() {
         }).then(function (response) {
             response.json().then((resp) => {
                 console.log("Received from postBook:", resp);
-                // document.getElementById("wrapper").innerHTML += `<class="card">
-                //                         <b>${resp.title}</b> by ${resp.author}`;
                 getBooks();
             });
         });
     });
 }
 
-var MENU_Book = (id) => {
-    BOOK_Book(bookList[id], function() {
-        if (bookList[id].title.length == 0) { /// must delete the book
-            // if (notes[id].hasOwnProperty('note_id')) {
-            //     SYNC_DeleteNote({
-            //         token: MENU_object.info.token,
-            //         note_id: notes[id].note_id
-            //     }, () => { });
-            //     MENU_object.notes = MENU_object.notes.filter(note => {
-            //         return note !== notes[id].note_id;
-            //     });
-            // }
-            deleteBook(bookList[id].id);
-            // getBooks();
+var MENU_Book = (bookIndex) => {
+    BOOK_Book(bookList[bookIndex], function() {
+        if (bookList[bookIndex].title.length == 0) { /// must delete the book
+            deleteBook(bookList[bookIndex].id);
         }
         else {  // update
-            console.log(bookList[id]);
-            // updateBook(bookList[id].id);
-            console.log(id, bookList[id].id);
-
-            const putObject = bookList[id];
-            // id is the index in the vector
-            // book_id is the id in the database/ json file
-            var book_id = bookList[id].id;
+            const putObject = bookList[bookIndex];
+            var book_id = bookList[bookIndex].id;
             fetch(`http://localhost:3000/books/${book_id}`, {
                 method: 'PUT',
                 headers: {
@@ -153,20 +102,14 @@ function renderBooks() {
         a.appendChild(bookDescription);
 
         if (book.state == "finished") {
-            // if (!a.classList.contains('finished')) {
-                a.classList.add('finished');
-            // }
+            a.classList.add('finished');
         }
         if (book.state == "reading") {
-            // if (!a.classList.contains('reading')) {
-                a.classList.add('currently-reading');
-            // }
+            a.classList.add('currently-reading');
         }
 
         booksContainer.appendChild(a);
         index += 1;
-        // document.getElementById("wrapper").innerHTML += `<section id="${book.id}" class="card">
-        //                             <b>${book.title}</b> by ${book.author}`;
     })
 }
 
@@ -179,6 +122,22 @@ function getBooks() {
             bookList = books;
 
             var wrapper = document.getElementById('wrapper');
+
+            MENU_html_code =
+                `<header id="header" class='header'>
+                    <h1>Hello there!</h1>
+                    <p>
+                    It is a beautiful ${printCurrentDay()}! Why don't you start reading a book? 
+                    With Zenodotus, your home library management single-page web application, you can keep track of your books!
+                    As you can see, the book list is alphabetically ordered.
+                    You can distinguish between the books you have finished, the ones you are currently reading and the ones you have not yet started by looking at the background color.
+                    <br>
+                    Out of all the books you have introduced, ${countReadBooks()} of them you have read, while ${countStartedBooks()} of them you have started to read.    
+                    </p>
+                    <a class='add-book-button btn-one' href="javascript:MENU_addBook()">Add New Book</a>
+                </header>
+                <section class="books-container" id="books-container"></section>`;
+
             wrapper.innerHTML = MENU_html_code;
 
             renderBooks();
@@ -187,3 +146,24 @@ function getBooks() {
 
 // get books
 getBooks();
+
+function countReadBooks() {
+    var count = 0;
+    bookList.forEach(book => {
+        if (book.state == "finished") {
+            count += 1;
+        }
+    });
+    return count;
+}
+
+function countStartedBooks() {
+    var count = 0;
+    bookList.forEach(book => {
+        if (book.state == "reading") {
+            count += 1;
+        }
+    });
+    console.log(bookList);
+    return count;
+}

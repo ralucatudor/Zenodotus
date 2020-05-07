@@ -1,9 +1,16 @@
+html {
+    height: 100%;
+}
 body {
-    background-image: url("img/image.jpg");
+    background-image: url("img/library-background-image.jpg");
+    background-repeat: repeat-y;
     background-color: #cccccc;
     color: white;
-    margin-bottom: 100px;
-    height: 100%;
+    /* margin-bottom: 100px; */
+
+    /* min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto; */
 }
 
 .title {
@@ -18,3 +25,12 @@ body {
     text-align: center;
     width: 100%;
 }
+
+  /* .content {
+    padding: 20px;
+  } */
+/* .footer {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    text-align: center;
+  } */

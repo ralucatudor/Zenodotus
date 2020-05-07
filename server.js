@@ -29,7 +29,7 @@ app.post("/books", (req, res) => {
   booksList.push(newBook); 
   writeJSONFile(booksList);
   res.status(200);
-  res.send(newBook);  // sau res.json ?
+  res.send(newBook);  // or res.json
 })
 
 // Read all
@@ -39,7 +39,6 @@ app.get("/books", (req, res) => { // req.query
 })
 
 // Read one
-// see result at http://localhost:3000/books/2
 app.get("/books/:id", (req, res) => {
   const booksList = readJSONFile();
   res.json(booksList.filter(elem => elem.id == req.params.id));
@@ -70,7 +69,6 @@ app.put("/books/:id", (req, res) => {
   }
 });
 
-
 // Delete
 app.delete("/books/:id", (req, res) => {
   const booksList = readJSONFile();
@@ -79,7 +77,6 @@ app.delete("/books/:id", (req, res) => {
 });
 
 // input/ output functions
-
 function readJSONFile() {
   return JSON.parse(fs.readFileSync("data/database.json"))["books"];
 }

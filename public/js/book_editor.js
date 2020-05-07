@@ -21,11 +21,10 @@ BOOK_html_code =
     <div id="warning" class="warning"></div>
 
     <div id="positive-warning" class="positive-warning"></div>
-    
-    <button class="button" onclick="BOOK_ProcessChanges()">Save</button>
-    <button class="button" onclick="NOTE_Discard()">Discard Changes</button>
-    <button class="button" onclick="BOOK_Delete()">Delete Note</button>
-</form>`;
+</form>    
+<button class="button" onclick="BOOK_ProcessChanges()">Save</button>
+<button class="button" onclick="NOTE_Discard()">Discard Changes</button>
+`;
 
 var BOOK_callback = null;
 var BOOK_object = null;
@@ -97,6 +96,20 @@ var BOOK_Book = function(obj, callback) {
  
     var wrapper = document.getElementById('wrapper');
     wrapper.innerHTML = BOOK_html_code;
+    // daca titlul e gol atunci este create
+    // altfel pot sa adaug delete node - nu e nevoie de delete node pt create
+    
+    if (BOOK_object.title.length > 0) { // NOT create
+        // <button class="button" onclick="BOOK_Delete()">Delete Book</button>
+
+        console.log("update");
+        var button = document.createElement("BUTTON");
+        button.textContent = "Delete Book";
+        button.setAttribute('class', 'button');
+        button.setAttribute('onclick', "BOOK_Delete()");
+
+        wrapper.appendChild(button);
+    }
 
     document.getElementById("title").value = obj.title;
     document.getElementById("author").value = obj.author;
