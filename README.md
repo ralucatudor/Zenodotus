@@ -1,5 +1,5 @@
-# Zenodotus
-Home library management single-page web application
+# Zenodotus :books:
+Home library management single-page web application :book:
 
 ### Web Course Project (max 30 pts)
 
