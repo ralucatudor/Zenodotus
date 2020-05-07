@@ -8,11 +8,11 @@ BOOK_html_code =
     <label class='label' for="author"><b class='b'>Author</b></label>
     <input class='input' type="text" placeholder="Enter Author Here" name="author" id="author">
 
-    <label class="label" for="note_type"><b class='b'>Current state with regard to reading the book</b></label>
-    <select class="custom-select select" name="note_type" id="note_type">
+    <label class="label" for="reading_state"><b class='b'>Current state with regard to reading the book</b></label>
+    <select class="reading_state" name="reading_state" id="reading_state">
         <option value="finished" class="dropdown-menu">Finished</option>
         <option value="reading" class="dropdown-menu">Currently reading</option>
-        <option value="not-read" class="dropdown-menu">Haven't started</option>
+        <option value="not_read" class="dropdown-menu">Haven't started</option>
     </select> 
 
     <label class="label" for="description"><b class='b'>Description</b></label>       
@@ -49,18 +49,19 @@ var BOOK_ProcessChanges = function() {
     }
 
     var desc = document.getElementById("description").value;
-    // var note_type = document.getElementById("note_type").value;
 
-    if (note_type.length == 0) {
-        document.getElementById("warning").innerHTML = "<p>The note must have a type!</p>";
+    var reading_state = document.getElementById("reading_state").value;
+
+    if (reading_state.length == 0) {
+        document.getElementById("warning").innerHTML = "<p>Select the reading state for your book!</p>";
         return;
     }
 
     BOOK_object.title = title;
     BOOK_object.author = author;
     BOOK_object.desc = desc;
+    BOOK_object.state = reading_state; 
     console.log(BOOK_object);
-    // BOOK_object.task = note_type;
 
     document.getElementById("warning").innerHTML = "";
     document.getElementById("positive-warning").innerHTML = "<p>Saved Changes! Going back to main menu...</p>";
@@ -86,6 +87,6 @@ var BOOK_Book = function(obj, callback) {
 
     document.getElementById("title").value = obj.title;
     document.getElementById("author").value = obj.author;
-    // document.getElementById("note_type").value = obj.task;
+    document.getElementById("reading_state").value = obj.state;
     document.getElementById("description").value = obj.desc;
 }

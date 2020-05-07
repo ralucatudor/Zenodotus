@@ -15,6 +15,14 @@
 	width: 350px;
 }
 
+.finished {
+	background-color: rgba(90, 241, 135, 0.15)	!important;
+}
+
+.currently-reading {
+	background-color: rgba(241, 150, 90, 0.25)	!important;
+}
+
 .books-container .a .h3 {
 	margin: 1em;
 }
