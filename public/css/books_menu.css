@@ -1,3 +1,9 @@
+.add-book-button {
+	padding: 10px;
+	color: white;
+	text-decoration:none; /* Remove stubborn underline from link */
+}
+
 .books-container .a {
 	transition: all 0.3s ease;
 	border-bottom: none;

@@ -21,10 +21,8 @@ MENU_html_code =
     As you can see, the book list is alphabetically ordered.
     You can distinguish between the books you have finished, the ones you are currently reading and the ones you have not yet started by looking at the background color.
     </p>
-    <ul class="icons ul">
-        <li class='li'><a class='a' href="javascript:MENU_addBook()"><span class="label a">Add New Book</span></a></li>
-    </ul>
-</header>
+    <a class='add-book-button btn-one' href="javascript:MENU_addBook()">Add New Book</a>
+    </header>
 <section class="books-container" id="books-container">        
 </section>`;
 

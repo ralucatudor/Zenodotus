@@ -1,9 +1,9 @@
-/* https://1stwebdesigner.com/20-amazing-pure-css-animated-buttons/ */
-
 body {
     background-image: url("img/image.jpg");
     background-color: #cccccc;
     color: white;
+    margin-bottom: 100px;
+    height: 100%;
 }
 
 .title {
