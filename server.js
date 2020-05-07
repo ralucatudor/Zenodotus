@@ -4,6 +4,7 @@ const express = require('express');
 const morgan = require("morgan");
 const bodyParser= require('body-parser');
 const cors = require("cors");
+const uuid = require('uuid');
 
 const fs = require("fs");
 
@@ -21,13 +22,14 @@ app.use(express.static('public'));
 // Create
 app.post("/books", (req, res) => {
   const booksList = readJSONFile();
-  // req.body.id = 4;
-  console.log(":(", req.body);
+  const newBook = req.body;
+  newBook.id = uuid.v4();
+  console.log("Post", newBook);
   
-  booksList.push(req.body); 
+  booksList.push(newBook); 
   writeJSONFile(booksList);
   res.status(200);
-  res.send(req.body);
+  res.send(newBook);  // sau res.json ?
 })
 
 // Read all
@@ -46,7 +48,11 @@ app.get("/books/:id", (req, res) => {
 // Update
 
 // Delete
-
+app.delete("/books/:id", (req, res) => {
+  const booksList = readJSONFile();
+  writeJSONFile(booksList.filter(elem => elem.id != req.params.id));
+  res.send("Deleted");
+});
 
 // input/ output functions
 

@@ -30,47 +30,67 @@ MENU_html_code =
 
 var bookList = [];
 
+function deleteBook(id) {
+    // delete dog
+    fetch(`http://localhost:3000/books/${id}`, {
+        method: 'DELETE',
+    }).then(function () {
+        // Get the new dogs list
+        getBooks();
+    });
+}
+
 var MENU_Book = (id) => {
     if (id == -1) {
         /// I must create a new book
+        
         bookList.push({
             title: "",
             author: "",
             desc: ""
         })
         id = bookList.length - 1;
+        bookList[id].id = id;
     }
     BOOK_Book(bookList[id], function() {
-        //console.log(JSON.stringify(bookList[id]));
-        const postObject = bookList[id];
-        // post book
-        fetch("/books", {
-            method: 'POST',
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(postObject)
-        }).then(function (response) {
-            response.json().then((resp) => {
-                console.log("Received from postBook:", resp);
-                // document.getElementById("wrapper").innerHTML += `<class="card">
-                //                         <b>${resp.title}</b> by ${resp.author}`;
-                getBooks();
+        if (bookList[id].title.length == 0) { /// must delete the book
+            // if (notes[id].hasOwnProperty('note_id')) {
+            //     SYNC_DeleteNote({
+            //         token: MENU_object.info.token,
+            //         note_id: notes[id].note_id
+            //     }, () => { });
+            //     MENU_object.notes = MENU_object.notes.filter(note => {
+            //         return note !== notes[id].note_id;
+            //     });
+            // }
+            deleteBook(bookList[id].id);
+            // getBooks();
+        }
+        else {
+            //console.log(JSON.stringify(bookList[id]));
+            const postObject = bookList[id];
+            // post book
+            fetch("/books", {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(postObject)
+            }).then(function (response) {
+                response.json().then((resp) => {
+                    console.log("Received from postBook:", resp);
+                    // document.getElementById("wrapper").innerHTML += `<class="card">
+                    //                         <b>${resp.title}</b> by ${resp.author}`;
+                    getBooks();
+                });
             });
-        });
+        }
     });
 }
 
 function renderBooks() {
-    // si pun anumite clase la cartile citite - asa ca o sa le pun alt stil css - le fac mai verzi
-    // iar la cele la care sunt in proces de citire, adaug si cat % din carte am citit
-    // si la pun alta clasa si alt stil
-
     bookList.sort((a, b) => {
-        var asmall = false;
-        asmall = (a.title < b.title);
-
-        if (asmall)
+        if (a.title < b.title)
             return -1;
         return 1;
     });
@@ -131,4 +151,5 @@ function getBooks() {
         })
 }
 
-getBooks();     // APELEZ----------------------------------
+// get books
+getBooks();

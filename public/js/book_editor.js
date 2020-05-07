@@ -24,7 +24,7 @@ BOOK_html_code =
     
     <button class="button" onclick="BOOK_ProcessChanges()">Save</button>
     <button class="button" onclick="NOTE_Discard()">Discard Changes</button>
-    <button class="button" onclick="NOTE_Delete()">Delete Note</button>
+    <button class="button" onclick="BOOK_Delete()">Delete Note</button>
 </form>`;
 
 var BOOK_callback = null;
@@ -66,18 +66,36 @@ var BOOK_ProcessChanges = function() {
     document.getElementById("warning").innerHTML = "";
     document.getElementById("positive-warning").innerHTML = "<p>Saved Changes! Going back to main menu...</p>";
 
-    window.onbeforeunload = function() { }
+    // window.removeEventListener('beforeunload', (event) => {
+    //     // Cancel the event as stated by the standard.
+    //     event.preventDefault();
+    //     // Chrome requires returnValue to be set.
+    //     event.returnValue = '';
+    // });
+
+
     setTimeout(BOOK_callback, 1000);
 }
 
 
+var BOOK_Delete = function() {
+    BOOK_object.title = "";
+    /// it should self-distruct without a title
+    // window.onbeforeunload = function() { }
+    document.getElementById("warning").innerHTML = "";
+    document.getElementById("positive-warning").innerHTML = "<p>Note Deleted! Going back to main menu...</p>";
+
+    // window.onbeforeunload = function() { }
+    setTimeout(BOOK_callback, 1000);
+}
+
 var BOOK_Book = function(obj, callback) {
-    window.addEventListener('beforeunload', (event) => {
-        // Cancel the event as stated by the standard.
-        event.preventDefault();
-        // Chrome requires returnValue to be set.
-        event.returnValue = '';
-      });
+    // window.addEventListener('beforeunload', (event) => {
+    //     // Cancel the event as stated by the standard.
+    //     event.preventDefault();
+    //     // Chrome requires returnValue to be set.
+    //     event.returnValue = '';
+    // });
 
     BOOK_callback = callback;
     BOOK_object = obj;
