@@ -46,6 +46,30 @@ app.get("/books/:id", (req, res) => {
 });
 
 // Update
+app.put("/books/:id", (req, res) => {
+  const booksList = readJSONFile();
+  const id = req.params.id;
+  const newBook = req.body;
+  newBook.id = id;
+  idFound = false;
+
+  const newBooksList = booksList.map((book) => {
+    if (book.id === id) {
+       idFound = true;
+       return newBook;
+     }
+    return book;
+  })
+  
+  writeJSONFile(newBooksList);
+
+  if (idFound) {
+    res.json(newBook);
+  } else {
+    res.status(404).send(`Book ${id} was not found`);
+  }
+});
+
 
 // Delete
 app.delete("/books/:id", (req, res) => {

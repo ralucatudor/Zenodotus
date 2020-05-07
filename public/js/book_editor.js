@@ -33,10 +33,6 @@ var BOOK_object = null;
  
 var BOOK_ProcessChanges = function() {
     var title = document.getElementById("title").value;
-    if (title.length > 20) {
-        document.getElementById("warning").innerHTML = "<p>The title is too long!</p>";
-        return;
-    }
     if (title.length == 0) {
         document.getElementById("warning").innerHTML = "<p>The book must have a title!</p>";
         return;
@@ -73,8 +69,7 @@ var BOOK_ProcessChanges = function() {
     //     event.returnValue = '';
     // });
 
-
-    setTimeout(BOOK_callback, 1000);
+    setTimeout(BOOK_callback, 500);
 }
 
 
@@ -86,7 +81,7 @@ var BOOK_Delete = function() {
     document.getElementById("positive-warning").innerHTML = "<p>Note Deleted! Going back to main menu...</p>";
 
     // window.onbeforeunload = function() { }
-    setTimeout(BOOK_callback, 1000);
+    setTimeout(BOOK_callback, 500);
 }
 
 var BOOK_Book = function(obj, callback) {

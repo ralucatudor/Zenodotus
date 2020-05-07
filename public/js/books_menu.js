@@ -22,7 +22,7 @@ MENU_html_code =
     You can distinguish between the books you have finished, the ones you are currently reading and the ones you have not yet started by looking at the background color.
     </p>
     <ul class="icons ul">
-        <li class='li'><a class='a' href="javascript:MENU_Book(-1)"><span class="label a">Add New Book</span></a></li>
+        <li class='li'><a class='a' href="javascript:MENU_addBook()"><span class="label a">Add New Book</span></a></li>
     </ul>
 </header>
 <section class="books-container" id="books-container">        
@@ -40,18 +40,53 @@ function deleteBook(id) {
     });
 }
 
+function updateBook(id) {
+    // creat put object
+    const putObject = bookList[id];
+    console.log(bookList[id]);
+    fetch(`http://localhost:3000/books/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(putObject)
+    }).then(function () {
+        // Get the new books list
+        getBooks();
+    });
+}
+
+function MENU_addBook() {
+    // I must create a new book
+    bookList.push({
+        title: "",
+        author: "",
+        desc: ""
+    })
+    id = bookList.length - 1;
+    bookList[id].id = id;
+    BOOK_Book(bookList[id], function() {
+        //console.log(JSON.stringify(bookList[id]));
+        const postObject = bookList[id];
+        // post book
+        fetch("/books", {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(postObject)
+        }).then(function (response) {
+            response.json().then((resp) => {
+                console.log("Received from postBook:", resp);
+                // document.getElementById("wrapper").innerHTML += `<class="card">
+                //                         <b>${resp.title}</b> by ${resp.author}`;
+                getBooks();
+            });
+        });
+    });
+}
+
 var MENU_Book = (id) => {
-    if (id == -1) {
-        /// I must create a new book
-        
-        bookList.push({
-            title: "",
-            author: "",
-            desc: ""
-        })
-        id = bookList.length - 1;
-        bookList[id].id = id;
-    }
     BOOK_Book(bookList[id], function() {
         if (bookList[id].title.length == 0) { /// must delete the book
             // if (notes[id].hasOwnProperty('note_id')) {
@@ -66,23 +101,24 @@ var MENU_Book = (id) => {
             deleteBook(bookList[id].id);
             // getBooks();
         }
-        else {
-            //console.log(JSON.stringify(bookList[id]));
-            const postObject = bookList[id];
-            // post book
-            fetch("/books", {
-                method: 'POST',
+        else {  // update
+            console.log(bookList[id]);
+            // updateBook(bookList[id].id);
+            console.log(id, bookList[id].id);
+
+            const putObject = bookList[id];
+            // id is the index in the vector
+            // book_id is the id in the database/ json file
+            var book_id = bookList[id].id;
+            fetch(`http://localhost:3000/books/${book_id}`, {
+                method: 'PUT',
                 headers: {
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify(postObject)
-            }).then(function (response) {
-                response.json().then((resp) => {
-                    console.log("Received from postBook:", resp);
-                    // document.getElementById("wrapper").innerHTML += `<class="card">
-                    //                         <b>${resp.title}</b> by ${resp.author}`;
-                    getBooks();
-                });
+                body: JSON.stringify(putObject)
+            }).then(function () {
+                // Get the new books list
+                getBooks();
             });
         }
     });
