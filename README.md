@@ -45,5 +45,9 @@ CRUD is an acronym for Create, Read, Update and Delete. It is a set of operation
 
 POST, GET, PUT, and DELETE requests let us construct Rest APIs.
 
-
+---
 Use `npm run dev`
+
+---
+
+[See also documentation](documentation.md)

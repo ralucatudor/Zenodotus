@@ -85,6 +85,8 @@ var BOOK_Delete = function() {
 }
 
 var BOOK_Book = function(obj, callback) {
+    var start = new Date();
+
     // window.addEventListener('beforeunload', (event) => {
     //     // Cancel the event as stated by the standard.
     //     event.preventDefault();

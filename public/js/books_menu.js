@@ -1,3 +1,5 @@
+var start = new Date();
+
 function printCurrentDay() {
     var d = new Date();
     var weekday = new Array(7);
@@ -24,6 +26,7 @@ function deleteBook(id) {
 }
 
 function MENU_addBook() {
+    start = new Date();
     // I must create a new book
     bookList.push({
         title: "",
@@ -50,11 +53,12 @@ function MENU_addBook() {
 }
 
 var MENU_Book = (bookIndex) => {
+    start = new Date();
     BOOK_Book(bookList[bookIndex], function() {
         if (bookList[bookIndex].title.length == 0) { /// must delete the book
             deleteBook(bookList[bookIndex].id);
         }
-        else {  // update
+        else {  // update (or discard - nothing happens)
             const putObject = bookList[bookIndex];
             var book_id = bookList[bookIndex].id;
             fetch(`http://localhost:3000/books/${book_id}`, {
@@ -113,7 +117,18 @@ function renderBooks() {
     })
 }
 
-function getBooks() {
+function printElapsedTime(start) {
+    var end = new Date();
+
+    var p = document.getElementById('elapsed-time');
+    var time = parseInt((end.getTime() - start.getTime())/ 1000);
+
+    p.innerHTML = `elapsed time: ${time} seconds`
+}
+
+function getBooks() {    
+    let timerId = setInterval(() => printElapsedTime(start), 1000);
+
     document.getElementById("wrapper").innerHTML += "Here are your books:";
     const res = fetch("/books")     // no need to specify the method, Fetch automatically sets the method to get if you leave it out
         .then((res) => res.json())  // Trasform server response to get the books
@@ -121,11 +136,14 @@ function getBooks() {
             console.log(books);
             bookList = books;
 
+            localStorage.setItem('myName', 'Raluca');
+            var name = localStorage.getItem('myName');
+
             var wrapper = document.getElementById('wrapper');
 
             MENU_html_code =
                 `<header id="header" class='header'>
-                    <h1 class="menu-greeting">Hello there!</h1>
+                    <h1 class="menu-greeting">Hello there, ${name}!</h1>
                     <p>
                     It is a beautiful ${printCurrentDay()}! Why don't you start reading a book? 
                     With Zenodotus, your home library management single-page web application, you can keep track of your books!
