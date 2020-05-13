@@ -27,6 +27,12 @@ body {
   font-family: 'Petit Formal Script', cursive;
 }
 
+.quote {
+  font-family: 'Petit Formal Script', cursive;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .footer {
   position: fixed;
   bottom: 0;

@@ -36,19 +36,26 @@ function MENU_addBook() {
     bookIndex = bookList.length - 1;
     BOOK_Book(bookList[bookIndex], function() {
         const postObject = bookList[bookIndex];
-        // post book
-        fetch("/books", {
-            method: 'POST',
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(postObject)
-        }).then(function (response) {
-            response.json().then((resp) => {
-                console.log("Received from postBook:", resp);
-                getBooks();
+        if (postObject.title.length) { 
+            // post book
+            fetch("/books", {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(postObject)
+            }).then(function (response) {
+                response.json().then((resp) => {
+                    console.log("Received from postBook:", resp);
+                    getBooks();
+                });
             });
-        });
+        }
+        else {
+             // If "Discard Changes" was selected, 
+             // then title still has 0 length and I do not need to post anything
+            getBooks();
+        }
     });
 }
 
@@ -123,7 +130,7 @@ function printElapsedTime(start) {
     var p = document.getElementById('elapsed-time');
     var time = parseInt((end.getTime() - start.getTime())/ 1000);
 
-    p.innerHTML = `elapsed time: ${time} seconds`
+    p.innerHTML = `Elapsed time: ${time} seconds`
 }
 
 function getBooks() {    
@@ -143,7 +150,7 @@ function getBooks() {
 
             MENU_html_code =
                 `<header id="header" class='header'>
-                    <h1 class="menu-greeting">Hello there, ${name}!</h1>
+                    <h1 id="greeting" class="menu-greeting"></h1>
                     <p>
                     It is a beautiful ${printCurrentDay()}! Why don't you start reading a book? 
                     With Zenodotus, your home library management single-page web application, you can keep track of your books!
@@ -152,11 +159,21 @@ function getBooks() {
                     <br>
                     Out of all the books you have introduced, ${countReadBooks()} of them you have read, while ${countStartedBooks()} of them you have started to read.    
                     </p>
+                    <p id="quote" class="quote"></p>
                     <a class='add-book-button' href="javascript:MENU_addBook()">Add New Book</a>
                 </header>
                 <section class="books-container" id="books-container"></section>`;
 
             wrapper.innerHTML = MENU_html_code;
+
+            // Level 2, Task 2
+            var greetingString = `Hello there, ${name}!`;
+            var greetingContainer = document.getElementById('greeting');
+            printLetterByLetterAnimation(greetingString ,greetingContainer);
+            // --------------
+            
+            // Level 1, Task 7
+            addRandomQuote();
 
             renderBooks();
         })
