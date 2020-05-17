@@ -20,7 +20,23 @@ Home library management single-page web application :book:
 
 - [x] Separate JavaScript file (0.5 pts)
 - [x] DOM (3 pts)
-- [ ] JavaScript events (1 pt)
+- [x] JavaScript events (1 pt)
+```javascript
+    var inputContainers = document.querySelectorAll('.input');
+    inputContainers[0].focus();
+
+    inputContainers.forEach( function(item) {
+        item.addEventListener("keydown", event => {
+            if (event.which === 13)     // ENTER
+            {       
+                event.preventDefault();
+                var currentIndex = parseInt(item.getAttribute("data-index"));
+                var nextInput = document.querySelector('[data-index="' + (currentIndex + 1).toString() + '"]');
+                nextInput.focus();
+            }
+        });
+    });
+```
 - [x] [AJAX](https://www.w3schools.com/xml/ajax_intro.asp) ([GET, POST, PUT, DELETE](http://www.restapitutorial.com/lessons/httpmethods.html)) (4 pts)
 - [ ] localStorage (0.5 pts)
 

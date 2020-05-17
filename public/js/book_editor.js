@@ -3,31 +3,31 @@ BOOK_html_code =
 <h1 class='h1' style='text-align:center;border:10px 10px;'>Welcome to the Book editor!</h1>
 <form class='form' action='#' onsubmit="return false">
     <label class='' for="title"><b class='b'>Title of the Book</b></label>
-    <input class='input' type="text" placeholder="Enter Title Here" name="title" id="title">
+    <input class='input' type="text" placeholder="Enter Title Here" name="title" id="title" data-index="1">
     
     <label class='' for="author"><b class='b'>Author</b></label>
-    <input class='input' type="text" placeholder="Enter Author Here" name="author" id="author">
+    <input class='input' type="text" placeholder="Enter Author Here" name="author" id="author" data-index="2">
 
     <label class="" for="reading_state"><b class='b'>Current state with regard to reading the book</b></label>
-    <select class="custom-select select reading_state" name="reading_state" id="reading_state" onchange="yesnoCheck(this);">
+    <select class="input custom-select select reading_state" name="reading_state" id="reading_state" onchange="yesnoCheck(this);" data-index="3">
         <option value="finished" class="dropdown-menu">Finished</option>
         <option value="reading" class="dropdown-menu">Currently reading</option>
         <option value="not_read" class="dropdown-menu">Haven't started</option>
     </select> 
 
     <label class="" for="description"><b class='b'>Description</b></label>       
-    <textarea class="textarea content-textbox description" name="description" cols="40" rows="10" id="description" placeholder="Enter a Short Description of the Book Here"></textarea>
+    <textarea class="textarea content-textbox description input" name="description" cols="40" rows="10" id="description" placeholder="Enter a Short Description of the Book Here" data-index="4"></textarea>
 
     <div id="ifYes" style="display: none;">
         <label for="nr_pages_read">
             How many pages have you read so far?
         </label> 
-        <input type="text" id="nr_pages_read" name="nr_pages_read" placeholder="Enter the Number of Pages Read Here">
+        <input type="text" class="input" id="nr_pages_read" name="nr_pages_read" placeholder="Enter the Number of Pages Read Here" data-index="5">
         
         <label for="nr_pages">
             Total Number of Pages
         </label> 
-        <input type="text" id="nr_pages" name="nr_pages" placeholder="Enter the Total Number of Pages Here">
+        <input type="text" class="input" id="nr_pages" name="nr_pages" placeholder="Enter the Total Number of Pages Here" data-index="6">
     </div>
 
     <div id="warning" class="warning"></div>
@@ -144,6 +144,23 @@ var BOOK_Book = function(obj, callback) {
     document.getElementById("description").value = obj.desc;
     document.getElementById("nr_pages_read").value = obj.nr_pages_read;
     document.getElementById("nr_pages").value = obj.nr_pages;
+
+
+    var inputContainers = document.querySelectorAll('.input');
+    inputContainers[0].focus();
+
+    inputContainers.forEach( function(item) {
+        item.addEventListener("keydown", event => {
+            // using which because keyCode is deprecated 
+            if (event.which === 13)     // ENTER
+            {       
+                event.preventDefault();
+                var currentIndex = parseInt(item.getAttribute("data-index"));
+                var nextInput = document.querySelector('[data-index="' + (currentIndex + 1).toString() + '"]');
+                nextInput.focus();
+            }
+        });
+    });
 }
 
 // Level 2, Task 6
