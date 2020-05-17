@@ -1,12 +1,12 @@
-.add-book-button {
+.animated-button {
 	color: #FFF;
 	transition: all 0.3s;
 	position: relative;
 }
-.add-book-button span {
+.animated-button span {
 	transition: all 0.3s;
 }
-.add-book-button::before {
+.animated-button::before {
 	content: '';
 	position: absolute;
 	bottom: 0;
@@ -24,14 +24,14 @@
 	border-bottom-color: rgba(255,255,255,0.5);
 	transform: scale(0.1, 1);
 }
-.add-book-button:hover span {
+.animated-button:hover span {
 	letter-spacing: 2px;
 }
-.add-book-button:hover::before {
+.animated-button:hover::before {
 	opacity: 1;	
 	transform: scale(1, 1);	
 }
-.add-book-button::after {
+.animated-button::after {
 	content: '';
 	position: absolute;
 	bottom: 0;
@@ -42,7 +42,7 @@
 	transition: all 0.3s;
 	background-color: rgba(255,255,255,0.1);
 }
-.add-book-button:hover::after {
+.animated-button:hover::after {
 	opacity: 0;	
 	transform: scale(0.1, 1);
 }

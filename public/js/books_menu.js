@@ -31,7 +31,9 @@ function MENU_addBook() {
     bookList.push({
         title: "",
         author: "",
-        desc: ""
+        desc: "",
+        nr_pages_read: "",
+        nr_pages: ""
     })
     bookIndex = bookList.length - 1;
     BOOK_Book(bookList[bookIndex], function() {
@@ -103,7 +105,7 @@ function renderBooks() {
         a.appendChild(title);
 
         var author = document.createElement('p');
-        author.innerHTML = `by ${book.author}`
+        author.innerHTML = `by ${book.author}`;
 
         a.appendChild(author);
 
@@ -117,6 +119,11 @@ function renderBooks() {
         }
         if (book.state == "reading") {
             a.classList.add('currently-reading');
+
+            var percentage_read_pages = document.createElement('p');
+            percentage_read_pages.innerHTML = 
+                `You have read ${(book.nr_pages_read / book.nr_pages * 100).toFixed(2)}% of this book so far!`;
+            a.appendChild(percentage_read_pages);
         }
 
         booksContainer.appendChild(a);
@@ -160,7 +167,7 @@ function getBooks() {
                     Out of all the books you have introduced, ${countReadBooks()} of them you have read, while ${countStartedBooks()} of them you have started to read.    
                     </p>
                     <p id="quote" class="quote"></p>
-                    <a class='add-book-button' href="javascript:MENU_addBook()">Add New Book</a>
+                    <a class='button animated-button' href="javascript:MENU_addBook()">Add New Book</a>
                 </header>
                 <section class="books-container" id="books-container"></section>`;
 
