@@ -17,17 +17,13 @@ body {
 }
 
 .wrapper {
-  /* max-width: 80em; */
   max-width: 70%;
 	margin: 0 auto;
-	padding: 0 2em; /* dc? */
-	opacity: 1;
+	padding: 0;
 	filter: none;
-	/* transition: opacity 1s ease, filter 1s ease; */
 }
 
 .title {
-  font-size: 2.5em;
   font-family: 'Ovo', serif; 
   text-align: center;
   padding: 0.5em;
@@ -39,27 +35,60 @@ body {
 
 .quote {
   font-family: 'Petit Formal Script', cursive;
-  font-size: 20px;
   font-weight: bold;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
+  text-align: justify;
 }
 
  /* ==================== Media Queries ==================== */
 @media screen and (min-width: 1281px) {
   /* Desktop */
+  .footer {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+  }
+  .title {
+    font-size: 3em;
+  }
+  .menu-greeting {
+    font-size: 2.5em;
+  }
+  .quote {
+    font-size: 1.5em;
+  }
 }
 
 @media screen and (min-width:768px) and (max-width: 1280px) { 
-  /* Tablets */ 
+  /* Tablet */ 
+  .footer {
+    text-align: center;
+    width: 100%;
+  }
+  .title {
+    font-size: 2.5em;
+  }
+  .menu-greeting {
+    font-size: 2em;
+  }
+  .quote {
+    font-size: 1.3em;
+  }
 } 
 
 @media screen and (max-width: 768px) { 
   /* Mobile */ 
-
+  .footer {
+    text-align: center;
+    width: 100%;
+  }
+  .title {
+    font-size: 2em;
+  }
+  .menu-greeting {
+    font-size: 1.7em;
+  }
+  .quote {
+    font-size: 1em;
+  }
 }

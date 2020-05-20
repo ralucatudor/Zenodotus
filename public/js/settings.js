@@ -1,6 +1,8 @@
 SETTINGS_html_code = `
-    <label class='' for="greeting"><b class='b'>Choose your Greeting</b></label>
-    <input class='input' type="text" placeholder="Enter Greeting Here" name="greeting" id="greeting-input">
+    <p class='settings-greeting'>Welcome, ${localName}, to the Setting Menu!</p>
+    <label class="label-text" for="greeting">Choose your Greeting</label>
+    <input class="input input-short-text" type="text" placeholder="Enter Greeting Here" name="greeting" id="greeting-input">
+    <br>
     <a class='animated-button button' href="javascript:SETTINGS_Save()">Save</a>
 `;
 

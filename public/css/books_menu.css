@@ -1,30 +1,42 @@
+.menu-header-text {
+	text-align: justify;
+}
+
 .button {
 	padding: 10px;
 	color: white;
 	text-decoration:none; /* Remove stubborn underline from link */
+	font-size: 20px;
 }
 
-.books-container {
-	margin-top: 50px; /* media queries - poate mai putin */
-}
-
-.books-container .a {
+.menu-book {
 	transition: all 0.3s ease;	/* DOM - add margin when mouseover */
-	/* border-bottom: none; */
 	display: block;
 	margin: 1em 0 1em 0;
 	text-align: center;
 	border-radius: 25px;
 	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 	background-color: rgba(255, 255, 255, 0.137);
-	/* cursor: pointer; */
-	/* outline: 0; */
 	overflow: hidden;
 	text-decoration: none; /* Remove stubborn underline from link */
 	color: white;	/* text color */
 	width: 350px;
 }
 
+.menu-book-title {
+	margin: 1em;
+}
+
+/* Layout */
+.books-container {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;	/* shorthand for the flex-direction and flex-wrap properties */
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Different colors for my books depending on the reading state */
 .finished {
 	background-color: rgba(90, 241, 135, 0.15)	!important;
 }
@@ -33,24 +45,39 @@
 	background-color: rgba(241, 150, 90, 0.25)	!important;
 }
 
-.books-container .a .h3 {
-	margin: 1em;
+ /* ==================== Media Queries ==================== */
+@media screen and (min-width: 1281px) {
+	/* Desktop */
+	.books-container {
+		margin-top: 50px;
+	}
+	.menu-header-text {
+		font-size: 20px;
+	}
 }
-
-/* .books-container {
-	display: flex;
-	flex-direction: column;
-	padding-left: 2em;
-	position: relative;
-	margin: 0 0 2em -2em;
-} */
-
-.books-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    vertical-align: top;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
+  
+@media screen and (min-width:768px) and (max-width: 1280px) { 
+	/* Tablet */ 
+	.books-container {
+		margin-top: 40px;
+	}
+	.menu-header-text {
+		font-size: 18px;
+	}
+	.button {
+		font-size: 18px;
+	}
+} 
+  
+@media screen and (max-width: 768px) { 
+	/* Mobile */ 
+	.books-container {
+		margin-top: 30px;
+	}
+	.menu-header-text {
+		font-size: 16px;
+	}
+	.button {
+		font-size: 16px;
+	}
 }

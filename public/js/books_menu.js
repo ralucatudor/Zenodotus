@@ -23,15 +23,7 @@ function printCurrentDay() {
 
 var bookList = [];
 
-function deleteBook(id) {
-    fetch(`http://localhost:3000/books/${id}`, {
-        method: 'DELETE',
-    }).then(function () {
-        // Get the new books list
-        getBooks();
-    });
-}
-
+// ========== POST ==========
 function MENU_addBook() {
     start = new Date();
     // I must create a new book
@@ -68,6 +60,16 @@ function MENU_addBook() {
     });
 }
 
+// ========== DELETE ==========
+function deleteBook(id) {
+    fetch(`http://localhost:3000/books/${id}`, {
+        method: 'DELETE',
+    }).then(function () {
+        // Get the new books list
+        getBooks();
+    });
+}
+
 var MENU_Book = (bookIndex) => {
     start = new Date();
     BOOK_Book(bookList[bookIndex], function() {
@@ -77,6 +79,7 @@ var MENU_Book = (bookIndex) => {
         else {  // update (or discard - nothing happens)
             const putObject = bookList[bookIndex];
             var book_id = bookList[bookIndex].id;
+            // ========== PUT ==========
             fetch(`http://localhost:3000/books/${book_id}`, {
                 method: 'PUT',
                 headers: {
@@ -104,14 +107,14 @@ function renderBooks() {
     bookList.forEach((book) => {
         var a = document.createElement('a');
         a.setAttribute('href', 'javascript:MENU_Book(' + index + ')');
-        a.setAttribute('class', 'a');
+        a.setAttribute('class', 'menu-book');
 
         var title = document.createElement('h3');
-        title.setAttribute('class', 'h3');
+        title.setAttribute('class', 'menu-book-title');
         title.innerHTML = `“${book.title}”`;
         a.appendChild(title);
 
-        var author = document.createElement('p');
+        var author = document.createElement('h4');
         author.innerHTML = `by ${book.author}`;
 
         a.appendChild(author);
@@ -142,7 +145,7 @@ function renderBooks() {
 
         booksContainer.appendChild(a);
         index += 1;
-    })
+    });
 }
 
 function printElapsedTime(start) {
@@ -154,6 +157,7 @@ function printElapsedTime(start) {
     p.innerHTML = `Elapsed time: ${time} seconds`
 }
 
+// ========== GET ==========
 function getBooks() {    
     let timerId = setInterval(() => printElapsedTime(start), 1000);
 
@@ -172,19 +176,20 @@ function getBooks() {
             MENU_html_code =
                 `<header id="header" class='header'>
                     <h1 id="greeting" class="menu-greeting"></h1>
-                    <p>
+                    <p class="menu-header-text">
                     It is a beautiful ${printCurrentDay()}! Why don't you start reading a book? 
-                    With Zenodotus, your home library management single-page web application, you can keep track of your books!
+                    With <b>Zenodotus</b>, your home library management single-page web application, you can keep track of your books!
                     As you can see, the book list is alphabetically ordered.
                     You can distinguish between the books you have finished, the ones you are currently reading and the ones you have not yet started by looking at the background color.
-                    <br>
+                    <br><br>
                     Out of all the books you have introduced, ${countReadBooks()} of them you have read, while ${countStartedBooks()} of them you have started to read.    
                     </p>
                     <p id="quote" class="quote"></p>
                     <a class='button animated-button' href="javascript:MENU_addBook()">Add New Book</a>
+                    <a class='animated-button button' href="javascript:SETTINGS_Update()">Settings</a>
                 </header>
                 <section class="books-container" id="books-container"></section>
-                <a class='animated-button button' href="javascript:SETTINGS_Update()">Settings</a>`;
+                `;
 
             wrapper.innerHTML = MENU_html_code;
 
@@ -200,7 +205,7 @@ function getBooks() {
                 }, 10*1000);
                 sayHello = false;
             }
-            // --------------
+            // ---------------
             
             // Level 1, Task 7
             addRandomQuote();
@@ -209,7 +214,7 @@ function getBooks() {
         })
 }
 
-// get books
+// Call getBooks
 getBooks();
 
 function countReadBooks() {
