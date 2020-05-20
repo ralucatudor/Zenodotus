@@ -1,3 +1,8 @@
+// default greeting
+if (localStorage.getItem('myGreeting') == null) {
+    localStorage.setItem('myGreeting', 'Hello there');
+}
+
 var sayHello = true;
 
 var start = new Date();
@@ -160,7 +165,7 @@ function getBooks() {
             bookList = books;
 
             localStorage.setItem('myName', 'Raluca');
-            var name = localStorage.getItem('myName');
+            var localName = localStorage.getItem('myName');
 
             var wrapper = document.getElementById('wrapper');
 
@@ -178,13 +183,15 @@ function getBooks() {
                     <p id="quote" class="quote"></p>
                     <a class='button animated-button' href="javascript:MENU_addBook()">Add New Book</a>
                 </header>
-                <section class="books-container" id="books-container"></section>`;
+                <section class="books-container" id="books-container"></section>
+                <a class='animated-button button' href="javascript:SETTINGS_Update()">Settings</a>`;
 
             wrapper.innerHTML = MENU_html_code;
 
             // Level 2, Task 2
             if (sayHello) { 
-                var greetingString = `Hello there, ${name}!`;
+                var localGreeting = localStorage.getItem('myGreeting');
+                var greetingString = `${localGreeting}, ${localName}!`;
                 var greetingContainer = document.getElementById('greeting');
                 printLetterByLetterAnimation(greetingString ,greetingContainer);
 

@@ -13,7 +13,15 @@ Home library management single-page web application :book:
 ##### HTML & CSS (max 8 pts)
 
 - [x] Separate files for HTML and CSS (0.5 pts)
-- [ ] Use at least 4 [HTML5 Semantic Tags](https://www.w3schools.com/html/html5_semantic_elements.asp) (1 pt)
+- [x] Use at least 4 [HTML5 Semantic Tags](https://www.w3schools.com/html/html5_semantic_elements.asp) (1 pt)
+
+```html
+<header>...</header>
+<footer>...</footer>
+<form>...</form>
+<section class="books-container" id="books-container"></section>
+```
+
 - [ ] Min 80% CSS **.class** Selectors (0.5 pts)
 - [x] Layout: min 2 columns, using [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) and/ or [CSS grid](https://css-tricks.com/snippets/css/complete-guide-grid/) (2 pts)
 - [ ] The website has to be [responsive](https://www.w3schools.com/html/html_responsive.asp), respecting the following screen resolutions - use [media queries](https://www.uxpin.com/studio/blog/media-queries-responsive-web-design/): (4 puncte)
@@ -43,7 +51,9 @@ Home library management single-page web application :book:
     });
 ```
 - [x] [AJAX](https://www.w3schools.com/xml/ajax_intro.asp) ([GET, POST, PUT, DELETE](http://www.restapitutorial.com/lessons/httpmethods.html)) (4 pts)
-- [ ] localStorage (0.5 pts)
+- [x] localStorage (0.5 pts)
+for saving the greeting
++ TODO: time spent in one "page"
 
 #### Backend API (max 8 pts)
 
