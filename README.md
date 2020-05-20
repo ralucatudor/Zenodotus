@@ -1,6 +1,11 @@
 # Zenodotus :books:
 Home library management single-page web application :book:
 
+![GitHub last commit](https://img.shields.io/github/last-commit/ralucatudor/Zenodotus.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/ralucatudor/Zenodotus.svg)
+![TLOC](https://tokei.rs/b1/github/ralucatudor/Zenodotus)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ralucatudor/Zenodotus.svg)
+
 ### Web Course Project (max 30 pts)
 
 #### Frontend (max 17 pts)
