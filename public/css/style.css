@@ -16,6 +16,16 @@ body {
   margin-bottom: 100px;
 }
 
+.wrapper {
+  /* max-width: 80em; */
+  max-width: 70%;
+	margin: 0 auto;
+	padding: 0 2em; /* dc? */
+	opacity: 1;
+	filter: none;
+	/* transition: opacity 1s ease, filter 1s ease; */
+}
+
 .title {
   font-size: 2.5em;
   font-family: 'Ovo', serif; 

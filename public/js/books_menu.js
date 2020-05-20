@@ -1,3 +1,5 @@
+var sayHello = true;
+
 var start = new Date();
 
 function printCurrentDay() {
@@ -126,6 +128,13 @@ function renderBooks() {
             a.appendChild(percentage_read_pages);
         }
 
+        a.addEventListener("mouseover", () => {
+            a.style.border = "thick dotted darkgreen";
+        }, false);
+        a.addEventListener("mouseout", () => {
+            a.style.border = "";
+        }, false);
+
         booksContainer.appendChild(a);
         index += 1;
     })
@@ -174,9 +183,16 @@ function getBooks() {
             wrapper.innerHTML = MENU_html_code;
 
             // Level 2, Task 2
-            var greetingString = `Hello there, ${name}!`;
-            var greetingContainer = document.getElementById('greeting');
-            printLetterByLetterAnimation(greetingString ,greetingContainer);
+            if (sayHello) { 
+                var greetingString = `Hello there, ${name}!`;
+                var greetingContainer = document.getElementById('greeting');
+                printLetterByLetterAnimation(greetingString ,greetingContainer);
+
+                setTimeout(function() {
+                    greetingContainer.remove();
+                }, 10*1000);
+                sayHello = false;
+            }
             // --------------
             
             // Level 1, Task 7

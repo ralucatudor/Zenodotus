@@ -4,20 +4,24 @@
 	text-decoration:none; /* Remove stubborn underline from link */
 }
 
+.books-container {
+	margin-top: 50px; /* media queries - poate mai putin */
+}
+
 .books-container .a {
-	transition: all 0.3s ease;
-	border-bottom: none;
+	transition: all 0.3s ease;	/* DOM - add margin when mouseover */
+	/* border-bottom: none; */
 	display: block;
-	margin: 0 0 2em 0;
+	margin: 1em 0 1em 0;
 	text-align: center;
-	border-radius: 4px;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+	border-radius: 25px;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 	background-color: rgba(255, 255, 255, 0.137);
-	cursor: pointer;
-	outline: 0;
+	/* cursor: pointer; */
+	/* outline: 0; */
 	overflow: hidden;
-	text-decoration:none; /* Remove stubborn underline from link */
-	color: white;
+	text-decoration: none; /* Remove stubborn underline from link */
+	color: white;	/* text color */
 	width: 350px;
 }
 
@@ -49,13 +53,4 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-}
-
-.wrapper {
-	max-width: 80em;
-	margin: 0 auto;
-	padding: 0 2em;
-	opacity: 1;
-	filter: none;
-	transition: opacity 1s ease, filter 1s ease;
 }
