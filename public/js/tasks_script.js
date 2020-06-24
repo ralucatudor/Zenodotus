@@ -21,7 +21,8 @@ function addRandomQuote() {
 
     var quote = quoteList[getRandomInteger(0, quoteList.length - 1)];
     var quoteP = document.getElementById('quote');
-    printLetterByLetterAnimation(quote, quoteP);
+    // printLetterByLetterAnimation(quote, quoteP);
+    printWordByWordAnimation(quote, quoteP);
 }
 
 function printLetterByLetterAnimation(string, container) {
@@ -33,4 +34,26 @@ function printLetterByLetterAnimation(string, container) {
             clearTimeout(running); 
     var running = setTimeout(animate, 1000 / 15);
     })();
+}
+
+function printWordByWordAnimation(string, container) {
+    var str = string.split(" ");
+    
+    function animate() {
+        if (str.length)
+            container.innerHTML += (str.shift() + " ");
+        else
+            clearTimeout(running); 
+    var running = setTimeout(animate, 1000 / 3);
+    };
+
+    animate();
+}
+
+// ----------Animating the text in the title tag----------
+var titleText = document.title;
+function titleMarquee() {
+    titleText = titleText.substring(1, titleText.length) + titleText.substring(0, 1);
+    document.title = titleText;
+    setTimeout("titleMarquee()", 450);
 }

@@ -47,25 +47,39 @@ var BOOK_object = null;
 var BOOK_ProcessChanges = function() {
     var title = document.getElementById("title").value;
     if (title.length == 0) {
+        document.getElementById("title").style.borderColor = "red";
+        document.getElementById("title").style.background = "rgba(236, 108, 108, 0.616)";
+        
         document.getElementById("warning").innerHTML = "<p>The book must have a title!</p>";
         return;
     }
 
     var author = document.getElementById("author").value;
     if (author.length == 0) {
+        document.getElementById("title").style.background = "rgba(255, 255, 255, 0.075)";
+        document.getElementById("title").style.borderColor = "rgba(255, 255, 255, 0.25)";
+
+        document.getElementById("author").style.borderColor = "red";
+        document.getElementById("author").style.background = "rgba(236, 108, 108, 0.616)";
+        
         document.getElementById("warning").innerHTML = "<p>The book must have an author!</p>";
         return;
     }
 
-    var desc = document.getElementById("description").value;
-
     var reading_state = document.getElementById("reading_state").value;
 
     if (reading_state.length == 0) {
+        document.getElementById("author").style.background = "rgba(255, 255, 255, 0.075)";
+        document.getElementById("author").style.borderColor = "rgba(255, 255, 255, 0.25)";
+
+        document.getElementById("reading_state").style.borderColor = "red";
+        document.getElementById("reading_state").style.background = "rgba(236, 108, 108, 0.616)";
+        
         document.getElementById("warning").innerHTML = "<p>Select the reading state for your book!</p>";
         return;
     }
 
+    var desc = document.getElementById("description").value;
     var nr_pages_read = document.getElementById("nr_pages_read").value;
     var nr_pages = document.getElementById("nr_pages").value;
 

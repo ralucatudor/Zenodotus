@@ -5,6 +5,8 @@ if (localStorage.getItem('myGreeting') == null) {
 
 var sayHello = true;
 
+var bookList_sorting_order = 0;
+
 var start = new Date();
 
 function printCurrentDay() {
@@ -95,11 +97,19 @@ var MENU_Book = (bookIndex) => {
 }
 
 function renderBooks() {
-    bookList.sort((a, b) => {
-        if (a.title < b.title)
-            return -1;
-        return 1;
-    });
+    if (bookList_sorting_order == 0) {
+        bookList.sort((a, b) => {
+            if (a.title < b.title)
+                return -1;
+            return 1;
+        });
+    } else {
+        bookList.sort((a, b) => {
+            if (a.title > b.title)
+                return -1;
+            return 1;
+        });
+    }
 
     const booksContainer = document.getElementById('books-container');
 
@@ -187,6 +197,8 @@ function getBooks() {
                     <p id="quote" class="quote"></p>
                     <a class='button animated-button' href="javascript:MENU_addBook()">Add New Book</a>
                     <a class='animated-button button' href="javascript:SETTINGS_Update()">Settings</a>
+                    <br><br><br>
+                    <a id="change-sorting" class='animated-button button' href="javascript:changeBooksSortingOrder()">Change books sorting order</a>
                 </header>
                 <section class="books-container" id="books-container"></section>
                 `;
@@ -198,7 +210,8 @@ function getBooks() {
                 var localGreeting = localStorage.getItem('myGreeting');
                 var greetingString = `${localGreeting}, ${localName}!`;
                 var greetingContainer = document.getElementById('greeting');
-                printLetterByLetterAnimation(greetingString ,greetingContainer);
+                // printLetterByLetterAnimation(greetingString ,greetingContainer);
+                printWordByWordAnimation(greetingString ,greetingContainer);
 
                 setTimeout(function() {
                     greetingContainer.remove();
@@ -206,7 +219,7 @@ function getBooks() {
                 sayHello = false;
             }
             // ---------------
-            
+
             // Level 1, Task 7
             addRandomQuote();
 
@@ -237,3 +250,16 @@ function countStartedBooks() {
     console.log(bookList);
     return count;
 }
+
+// Task 1.5
+function changeBooksSortingOrder() {
+    bookList_sorting_order = (bookList_sorting_order + 1) % 2;
+    console.log("Changed sorting order!");
+    getBooks();
+}
+
+document.getElementById('wrapper').ondblclick = function(){
+    changeBooksSortingOrder();
+};
+// plus added button that calls changeBooksSortingOrder()
+
