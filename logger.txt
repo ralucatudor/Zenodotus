@@ -1,0 +1,58 @@
+[2020-06-23 23:18:17] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a adaugat cartea cu id-ul 5004bc99-d671-4628-bb27-ae3bf1d89aaf
+[2020-06-23 23:21:38] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a adaugat cartea cu id-ul 2fabd11d-c195-48cc-bf55-d327b6054044.
+[2020-06-23 23:21:58] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a adaugat cartea cu id-ul 09d76300-d8d1-473d-9c28-139544b35da6.
+[2020-06-23 23:33:15] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:33:18] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a sters cartea cu id-ul 2fabd11d-c195-48cc-bf55-d327b6054044.
+[2020-06-23 23:33:18] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:33:22] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a sters cartea cu id-ul dbb4e9d2-a532-4626-ae68-356a80b356a4.
+[2020-06-23 23:33:22] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:33:25] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a sters cartea cu id-ul 262ccc16-a01f-4b63-939e-38c35373add8.
+[2020-06-23 23:33:25] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:33:41] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a sters cartea cu id-ul 09d76300-d8d1-473d-9c28-139544b35da6.
+[2020-06-23 23:33:41] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:33:44] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a sters cartea cu id-ul acf4e6b7-f97c-4698-81b8-565d80d841db.
+[2020-06-23 23:33:44] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:33:48] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a sters cartea cu id-ul 2567ea14-5ff1-488b-b089-0436c8056931.
+[2020-06-23 23:33:48] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:33:53] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 5004bc99-d671-4628-bb27-ae3bf1d89aaf.
+[2020-06-23 23:33:53] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:33:59] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a sters cartea cu id-ul 18ebb35d-f2ed-41f6-a73b-c361af82cf45.
+[2020-06-23 23:34:02] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:51:36] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:53:34] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:53:52] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul e85816e2-0a6d-4546-9879-ce4c8f922011.
+[2020-06-23 23:53:52] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:53:54] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 5004bc99-d671-4628-bb27-ae3bf1d89aaf.
+[2020-06-23 23:53:54] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:54:07] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 94d5392d-fe7a-4ff6-9449-cdd3d7ef9bb0.
+[2020-06-23 23:54:07] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:54:11] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 3376186d-cf7e-4864-88cf-8e7583f0190d.
+[2020-06-23 23:54:11] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:54:17] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 689c872d-d212-4232-a8c8-7301f651dab8.
+[2020-06-23 23:54:17] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:54:21] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 689c872d-d212-4232-a8c8-7301f651dab8.
+[2020-06-23 23:54:21] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:56:29] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:56:31] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 5004bc99-d671-4628-bb27-ae3bf1d89aaf.
+[2020-06-23 23:56:31] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:56:43] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 482495c2-f460-4eef-b152-39ac8be785ce.
+[2020-06-23 23:56:43] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:56:48] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 482495c2-f460-4eef-b152-39ac8be785ce.
+[2020-06-23 23:56:48] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:58:31] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:58:34] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 5004bc99-d671-4628-bb27-ae3bf1d89aaf.
+[2020-06-23 23:58:34] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:58:38] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 482495c2-f460-4eef-b152-39ac8be785ce.
+[2020-06-23 23:58:38] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:58:51] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:59:42] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:59:50] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-23 23:59:59] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-24 17:27:51] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-24 18:36:34] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-24 18:37:41] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a modificat cartea cu id-ul 5004bc99-d671-4628-bb27-ae3bf1d89aaf.
+[2020-06-24 18:37:41] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-24 18:37:51] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a sters cartea cu id-ul 2e359a2f-c294-4521-978f-fb3722fe1aaa.
+[2020-06-24 18:37:51] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-24 18:40:42] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.
+[2020-06-24 18:43:05] Utilizatorul cu ip-ul ::ffff:127.0.0.1 a vizualizat toate cartile din baza de date.

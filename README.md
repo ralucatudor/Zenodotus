@@ -19,7 +19,7 @@ Home library management single-page web application :book:
 <header>...</header>
 <footer>...</footer>
 <form>...</form>
-<section class="books-container" id="books-container"></section>
+<section class="books-container" id="books-container">...</section>
 ```
 
 - [x] Min 80% CSS **.class** Selectors (0.5 pts)
@@ -149,6 +149,7 @@ POST, GET, PUT, and DELETE requests let us construct Rest APIs.
 
 ---
 Use `npm run dev`
+
 ---
 
 [See also documentation](documentation.md)
