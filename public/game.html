@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/game_style.css">
+    <title>Zenodotus Game</title>
+</head>
+
+<body>
+    <h1>Jocul BOOK VS. SOCIAL MEDIA</h1>
+    <p class="game-description">
+        &emsp;&emsp;La fiecare secunda, apar in pozitii random in divul de joc itemuri pe care personajul le doreste
+        (carti) si itemuri care ii fac rau (Social Media).
+        Item-urile apar la fiecare 2 secunde si dispar dupa 5 secunde, calculate din momentul aparitiei.
+        Jucatorul pentru fiecare item bun pe care il atinge primeste +1 pentru scor.
+        Daca atinge un item rau, se opreste jocul, divul jocului dispare si se afiseaza scorul.
+        <br>
+        &emsp;&emsp;Pentru a deplasa personajul, facem click in divul de joc si personajul se misca linear spre acea
+        locatie
+        (personajul va fi deviat din directia initiala daca se da un nou click).
+        Daca facem click pe un item din pagina, itemul, indiferent daca e bun sau rau, dispare, si
+        jucatorul pierde 1 din scor. Click-ul pe item nu trebuie sa afecteze deplasarea personajului,
+        ci doar clickul direct in div. In cazul in care se face click pe un item si scorul e 0,
+        itemul nu dispare si in dreptul cursorului apare un mesaj cu textul "Nu aveti voie".
+        Textul dispare la miscarea mouse-ului.
+    </p>
+
+    <h1 id="game-score">Scor: 0</h1>
+    <div id="game-wrapper" class="game-wrapper"></div>
+    <h1 id="final-score">Scorul final este: 0</h1>
+</body>
+<script src="js/game_constants.js"></script>
+<script src="js/utility_functions.js"></script>
+<script src="js/game.js"></script>
+
+</html>

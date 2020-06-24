@@ -1,0 +1,31 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("img/library-background-image.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  
+    color: white;
+    margin-bottom: 100px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.game-wrapper {
+    position: relative;
+    border-radius: 15px;
+    width: 1024px;
+    height: 768px;
+    overflow: hidden;
+}
+
+.game-description {
+    width: 1300px;
+    line-height: 20pt;
+    font-size: 18px;
+    text-align: justify;
+}
