@@ -85,6 +85,7 @@ function addItem() {
 
     imgItem.setAttribute("id", "item");
 
+    // Calculez random ce fel de item adaug in div-ul de joc
     let randomDistribution = getRandomInteger(1, 10);
     let isGood = true;
     if (randomDistribution <= 5) {
@@ -95,6 +96,7 @@ function addItem() {
         imgItem.setAttribute("src", Social_Media_FILEPATH);
     }
 
+    // Setez random pozitia item-ului in div-ul de joc
     let itemPosition = { 
         x: getRandomInteger(ITEM_WIDTH, WINDOW_WIDTH - ITEM_WIDTH), 
         y: getRandomInteger(ITEM_HEIGHT, WINDOW_HEIGHT - ITEM_HEIGHT) 
@@ -103,19 +105,22 @@ function addItem() {
     imgItem.style.left = `${itemPosition.x- ITEM_WIDTH / 2}px`;
     imgItem.style.top = `${itemPosition.y - ITEM_HEIGHT / 2}px`;
 
+    // Append-uiesc item-ul in div
     gameWrapper.appendChild(imgItem);
 
+    // Pastrez in vectorul gameItems obiecte item de tipul:
     let gameItem = {
-        position: itemPosition,
-        isGoodItem: isGood,
-        isNotTaken: true,
-        DOM_Object: imgItem
+        DOM_Object: imgItem,    // retin si obiectul DOM pentru a putea scoate/ ascunde item-ul din div 
+        position: itemPosition, // pozitia stabilita
+        isGoodItem: isGood,     // true pentru carte si false pentru telefon
+        isNotTaken: true        // daca inca nu a fost "prins" de player
     };
 
     gameItems.push(gameItem);
 
+    // Itemul va disparea dupa 5 secunde
     setTimeout(function () {
-        // Itemul va disparea
+        // scot item-ul din div -> nu il mai afisez
         gameItem.DOM_Object.style.display = "none";
         // Si il voi sterge din vector
         const gameItemIndex = gameItems.indexOf(gameItem);
@@ -151,34 +156,33 @@ function gameWrapperOnClick(event) {
             }
     }
     else {  // Daca s-a facut click in div - vom misca jucatorul
-        let outerBorders = gameWrapper.getBoundingClientRect(); // Element’s size and positioning within a webpage.
-
-        // Output the coordinates of the mouse pointer when the mouse button is clicked on an element:
-        // event.clientX -> Get the horizontal coordinate
-        // event.clientY -> Get the vertical coordinate
-        finalPosOnMovePlayer = { 
-            x: event.clientX - outerBorders.left,
-            y: event.clientY - outerBorders.top
-        };
+        // pozitia de unde incepe sa se miste
         startPosOnMovePlayer = { 
             x : playerPosition.x,
             y : playerPosition.y
         };
+        // pozitia unde s-a dat click - pozitia finala
+        let outerBorders = gameWrapper.getBoundingClientRect(); // Element’s size and positioning within a webpage.
+        finalPosOnMovePlayer = { 
+            x: event.clientX - outerBorders.left,
+            y: event.clientY - outerBorders.top
+        };
     }
 }
 
+// Cand miscam mouse-ul se apeleaza functia gameWrapperOnMouseMove(event)
 function gameWrapperOnMouseMove(event) {
-    let outerBorders = gameWrapper.getBoundingClientRect();
-
-    // Normalizez pozitia mouse-ului 
-    mousePosition.x = event.clientX - outerBorders.left;
-    mousePosition.y = event.clientY - outerBorders.top;
-
     // Textul "Nu aveti voie" dispare la miscarea mouse-ului
     if (cannotTakeItemText != null) {
         cannotTakeItemText.remove();
         cannotTakeItemText = null;
-    }
+    }    
+    
+    // Actualizez pozitia mouse-ului - o si normalizez
+    let outerBorders = gameWrapper.getBoundingClientRect();
+
+    mousePosition.x = event.clientX - outerBorders.left;
+    mousePosition.y = event.clientY - outerBorders.top;
 }
 
 function movePlayer() {
